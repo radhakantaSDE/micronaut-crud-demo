@@ -1,0 +1,26 @@
+micronaut:
+  application:
+    name: micronaut-crud-demo
+---
+#tag::datasource[]
+datasources:
+  default:
+    url: jdbc:mysql://localhost/micronaut-crud-demo?generateSimpleParameterMetadata=true&zeroDateTimeBehavior=convertToNull&verifyServerCertificate=false&useSSL=false
+    dialect: MYSQL
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root@123
+    schema-generate: CREATE_DROP
+#end::datasource[]
+---
+#tag::flyway[]
+flyway:
+  datasources:
+    default:
+      enabled: true # <1>
+#end::flyway[]
+
+jpa:
+  default:
+    entity-scan:
+      packages: 'com.learn.app'
